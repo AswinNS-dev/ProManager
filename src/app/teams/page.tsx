@@ -106,20 +106,36 @@ export default function TeamsPage() {
            email: memberForm.email,
            dob: memberForm.dob
          }]);
-         if (rosterErr) throw rosterErr;
+         if (rosterErr) {
+           // If email already exists, update that row instead of failing the whole flow.
+           if (rosterErr.code === '23505') {
+             const { error: rosterUpdateErr } = await supabase
+               .from('team_members')
+               .update({
+                 full_name: memberForm.full_name,
+                 role: memberForm.role,
+                 dob: memberForm.dob
+               })
+               .eq('email', memberForm.email);
+             if (rosterUpdateErr) throw rosterUpdateErr;
+           } else {
+             throw rosterErr;
+           }
+         }
 
          // Auto-whitelist their Google email! 
-         await supabase.from('google_whitelist').insert([{ 
+         const { error: whitelistErr } = await supabase.from('google_whitelist').upsert([{ 
             email: memberForm.email, 
             role: 'Employee' 
-         }]);
+         }], { onConflict: 'email' });
+         if (whitelistErr) throw whitelistErr;
 
-         const { error: authErr } = await supabase.from('system_users').insert([{
+         const { error: authErr } = await supabase.from('system_users').upsert([{
             username: creds.username,
             password: creds.password,
             full_name: memberForm.full_name,
             role: 'Employee'
-         }]);
+         }], { onConflict: 'username' });
          if (authErr) throw new Error("Auth Table Logic Failure. Check if system_users table exists in SQL!");
          
          alert(`SUCCESS: ${memberForm.full_name} Enlisted!\nID: ${creds.username}\nKey: ${creds.password}`);

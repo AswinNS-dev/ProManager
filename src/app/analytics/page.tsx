@@ -79,7 +79,7 @@ export default function AnalyticsPage() {
   if (isLoading) return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
       <Loader2 className="w-10 h-10 animate-spin text-primary" />
-      <span className="text-[10px] font-black uppercase text-muted-foreground tracking-widest text-center">Harvesting Fleet Intel...</span>
+      <span className="text-[10px] font-black uppercase text-muted-foreground tracking-widest text-center">Loading your analytics...</span>
     </div>
   );
 
@@ -89,13 +89,13 @@ export default function AnalyticsPage() {
     <div className="space-y-8 animate-in zoom-in-95 duration-700 pb-20">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-4xl font-black tracking-tighter">FLEET INTELLIGENCE</h1>
-          <p className="text-muted-foreground mt-2 font-medium uppercase text-[10px] tracking-[0.2em]">Visualizing cross-project performance and squad velocity.</p>
+          <h1 className="text-4xl font-black tracking-tighter">ANALYTICS DASHBOARD</h1>
+          <p className="text-muted-foreground mt-2 font-medium uppercase text-[10px] tracking-[0.2em]">See your projects, tasks, and progress at a glance.</p>
         </div>
         <div className="flex gap-4">
            <button className="px-4 py-3 bg-white/5 border border-white/5 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-white/10 transition-all">
               <Calendar className="w-4 h-4 text-primary" />
-              Real-time Feed <ChevronDown className="w-3 h-3 text-muted-foreground" />
+              This Month <ChevronDown className="w-3 h-3 text-muted-foreground" />
            </button>
         </div>
       </div>
@@ -104,45 +104,45 @@ export default function AnalyticsPage() {
         <div className="glass-card p-8 group border-primary/20">
            <div className="flex justify-between items-center mb-6">
              <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(140,249,23,0.2)]"><TrendingUp className="w-5 h-5 text-primary" /></div>
-             <span className="text-primary text-[10px] font-black px-2 py-1 bg-primary/10 rounded-full flex items-center gap-1 uppercase">Live Status</span>
+             <span className="text-primary text-[10px] font-black px-2 py-1 bg-primary/10 rounded-full flex items-center gap-1 uppercase">Active</span>
            </div>
-           <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Missions Active</span>
+           <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Active Projects</span>
            <h2 className="text-4xl font-black">{stats.totalMissions}</h2>
         </div>
         <div className="glass-card p-8 group">
            <div className="flex justify-between items-center mb-6">
              <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform"><Zap className="w-5 h-5 text-primary" /></div>
-             <span className="text-primary text-[10px] font-black px-2 py-1 bg-primary/10 rounded-full flex items-center gap-1 uppercase">Priority High</span>
+             <span className="text-primary text-[10px] font-black px-2 py-1 bg-primary/10 rounded-full flex items-center gap-1 uppercase">In Progress</span>
            </div>
-           <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Active Directives</span>
+           <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Active Tasks</span>
            <h2 className="text-4xl font-black">{stats.activeDirectives}</h2>
         </div>
         <div className="glass-card p-8 group">
            <div className="flex justify-between items-center mb-6">
              <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(140,249,23,0.2)]"><Target className="w-5 h-5 text-primary" /></div>
-             <span className="text-primary text-[10px] font-black px-2 py-1 bg-primary/10 rounded-full flex items-center gap-1 uppercase">Target Lock</span>
+             <span className="text-primary text-[10px] font-black px-2 py-1 bg-primary/10 rounded-full flex items-center gap-1 uppercase">Complete</span>
            </div>
-           <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Fleet Compliance</span>
+           <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Completion Rate</span>
            <h2 className="text-4xl font-black">{completionRate}%</h2>
         </div>
         <div className="glass-card p-8 group">
            <div className="flex justify-between items-center mb-6">
              <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform"><Activity className="w-5 h-5 text-primary" /></div>
            </div>
-           <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Total Objectives</span>
+           <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Total Tasks</span>
            <h2 className="text-4xl font-black">{stats.totalTasks}</h2>
         </div>
       </div>
 
       <div className="grid grid-cols-12 gap-8 pb-10">
          <div className="col-span-8 glass-card p-10 bg-primary/[0.01]">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-8 underline decoration-primary/30 underline-offset-[12px]">Tactical Allocation Heatmap</h3>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-8 underline decoration-primary/30 underline-offset-[12px]">Task Overview</h3>
             <div className="h-[400px] w-full">
                <ResponsiveContainer width="100%" height="100%">
                  <BarChart data={[
-                   { name: "Directives", val: stats.totalTasks, fill: '#1a1a1c' },
-                   { name: "Secured", val: stats.completedTasks, fill: '#8cf917' },
-                   { name: "Active", val: stats.activeDirectives, fill: '#ffffff' }
+                   { name: "Total", val: stats.totalTasks, fill: '#1a1a1c' },
+                   { name: "Completed", val: stats.completedTasks, fill: '#8cf917' },
+                   { name: "In Progress", val: stats.activeDirectives, fill: '#ffffff' }
                  ]}>
                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 10, fontWeight: '900'}} />
                    <Tooltip 
@@ -161,8 +161,8 @@ export default function AnalyticsPage() {
                   <div className="absolute inset-0 rounded-full border-4 border-primary border-r-transparent animate-spin duration-[3s]" />
                   <span className="text-2xl font-black">{completionRate}%</span>
                </div>
-               <h3 className="text-sm font-black tracking-widest uppercase mb-2 text-white">System Integrity</h3>
-               <p className="text-[10px] text-muted-foreground font-bold leading-relaxed uppercase tracking-tighter">Fleet overall objectives status.<br/>Mission success probability: <span className="text-primary font-black">HIGH</span></p>
+               <h3 className="text-sm font-black tracking-widest uppercase mb-2 text-white">Overall Progress</h3>
+               <p className="text-[10px] text-muted-foreground font-bold leading-relaxed uppercase tracking-tighter">Your team's task completion status.<br/>Getting <span className="text-primary font-black">BETTER</span> every day</p>
             </div>
             {/* Decorative BG element */}
             <Activity className="absolute -bottom-10 -right-10 w-40 h-40 text-primary/5 rotate-12" />
