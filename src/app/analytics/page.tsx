@@ -103,7 +103,7 @@ export default function AnalyticsPage() {
       <div className="grid grid-cols-4 gap-6">
         <div className="glass-card p-8 group border-primary/20">
            <div className="flex justify-between items-center mb-6">
-             <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(140,249,23,0.2)]"><TrendingUp className="w-5 h-5 text-primary" /></div>
+             <div className="p-3 bg-primary/10 rounded-xl shadow-[0_0_15px_rgba(140,249,23,0.2)]"><TrendingUp className="w-5 h-5 text-primary" /></div>
              <span className="text-primary text-[10px] font-black px-2 py-1 bg-primary/10 rounded-full flex items-center gap-1 uppercase">Active</span>
            </div>
            <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Active Projects</span>
@@ -111,7 +111,7 @@ export default function AnalyticsPage() {
         </div>
         <div className="glass-card p-8 group">
            <div className="flex justify-between items-center mb-6">
-             <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform"><Zap className="w-5 h-5 text-primary" /></div>
+             <div className="p-3 bg-primary/10 rounded-xl"><Zap className="w-5 h-5 text-primary" /></div>
              <span className="text-primary text-[10px] font-black px-2 py-1 bg-primary/10 rounded-full flex items-center gap-1 uppercase">In Progress</span>
            </div>
            <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Active Tasks</span>
@@ -119,7 +119,7 @@ export default function AnalyticsPage() {
         </div>
         <div className="glass-card p-8 group">
            <div className="flex justify-between items-center mb-6">
-             <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(140,249,23,0.2)]"><Target className="w-5 h-5 text-primary" /></div>
+             <div className="p-3 bg-primary/10 rounded-xl shadow-[0_0_15px_rgba(140,249,23,0.2)]"><Target className="w-5 h-5 text-primary" /></div>
              <span className="text-primary text-[10px] font-black px-2 py-1 bg-primary/10 rounded-full flex items-center gap-1 uppercase">Complete</span>
            </div>
            <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Completion Rate</span>
@@ -127,7 +127,7 @@ export default function AnalyticsPage() {
         </div>
         <div className="glass-card p-8 group">
            <div className="flex justify-between items-center mb-6">
-             <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform"><Activity className="w-5 h-5 text-primary" /></div>
+             <div className="p-3 bg-primary/10 rounded-xl"><Activity className="w-5 h-5 text-primary" /></div>
            </div>
            <span className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Total Tasks</span>
            <h2 className="text-4xl font-black">{stats.totalTasks}</h2>
